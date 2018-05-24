@@ -1,0 +1,8 @@
+[main]
+enabled = <%= @enable ? 1 : 0 %>
+<% unless @gpgcheck.nil? -%>
+gpgcheck = <%= @gpgcheck ? 1 : 0 %>
+<% end -%>
+<% if @timeout -%>
+timeout = <%= @timeout %>
+<% end -%>

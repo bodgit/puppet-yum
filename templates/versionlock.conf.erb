@@ -1,0 +1,6 @@
+[main]
+enabled = <%= @enable ? 1 : 0 %>
+locklist = <%= @locklist %>
+<% unless @follow_obsoletes.nil? -%>
+follow_obsoletes = <%= @follow_obsoletes ? 1 : 0 %>
+<% end -%>

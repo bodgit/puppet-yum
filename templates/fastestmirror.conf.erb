@@ -1,0 +1,32 @@
+[main]
+enabled = <%= @enable ? 1 : 0 %>
+<% unless @verbose.nil? -%>
+verbose = <%= @verbose ? 1 : 0 %>
+<% end -%>
+<% unless @always_print_best_host.nil? -%>
+always_print_best_host = <%= @always_print_best_host ? 1 : 0 %>
+<% end -%>
+<% if @socket_timeout -%>
+socket_timeout = <%= @socket_timeout %>
+<% end -%>
+<% if @hostfilepath -%>
+hostfilepath = <%= @hostfilepath %>
+<% end -%>
+<% if @maxhostfileage -%>
+maxhostfileage = <%= @maxhostfileage %>
+<% end -%>
+<% if @maxthreads -%>
+maxthreads = <%= @maxthreads %>
+<% end -%>
+<% if @exclude -%>
+exclude = <%= @exclude.join(',') %>
+<% end -%>
+<% if @include_only -%>
+include_only = <%= @include_only.join(',') %>
+<% end -%>
+<% if @prefer -%>
+prefer = <%= @prefer %>
+<% end -%>
+<% unless @downgrade_ftp.nil? -%>
+downgrade_ftp = <%= @downgrade_ftp ? 1 : 0 %>
+<% end -%>

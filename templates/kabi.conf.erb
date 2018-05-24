@@ -1,0 +1,8 @@
+[main]
+enabled = <%= @enable ? 1 : 0 %>
+<% if @whitelists -%>
+whitelists = <%= @whitelists %>
+<% end -%>
+<% unless @enforce.nil? -%>
+enforce = <%= @enforce ? 1 : 0 %>
+<% end -%>
