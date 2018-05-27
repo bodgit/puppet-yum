@@ -45,11 +45,11 @@ describe 'yum' do
       case facts[:os]['name']
       when 'CentOS'
         it { is_expected.to contain_class('yum::plugin::fastestmirror') }
-        it { is_expected.to contain_yum_conf('main/bugtracker_url').with_value('http://bugs.centos.org/set_project.php?project_id=23&ref=http://bugs.centos.org/bug_report_page.php?category=yum') }
         it { is_expected.to contain_yum_conf('main/distroverpkg').with_value('centos-release') }
         it { is_expected.to contain_yum_conf('main/installonly_limit').with_value(5) }
         case facts[:os]['release']['major']
         when '6'
+          it { is_expected.to contain_yum_conf('main/bugtracker_url').with_value('http://bugs.centos.org/set_project.php?project_id=19&ref=http://bugs.centos.org/bug_report_page.php?category=yum') }
           it { is_expected.to contain_yumrepo('base') }
           it { is_expected.to contain_yumrepo('base-debuginfo') }
           it { is_expected.to contain_yumrepo('c6-media') }
@@ -99,6 +99,7 @@ describe 'yum' do
             it { is_expected.to contain_yumrepo('C6.0-updates') }
           end
         when '7'
+          it { is_expected.to contain_yum_conf('main/bugtracker_url').with_value('http://bugs.centos.org/set_project.php?project_id=23&ref=http://bugs.centos.org/bug_report_page.php?category=yum') }
           it { is_expected.to contain_yumrepo('base') }
           it { is_expected.to contain_yumrepo('base-debuginfo') }
           it { is_expected.to contain_yumrepo('base-source') }
