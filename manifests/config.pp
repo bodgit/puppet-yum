@@ -8,15 +8,20 @@ class yum::config {
     mode   => '0644',
   }
 
-  file { "${::yum::conf_dir}/pluginconf.d":
-    ensure       => directory,
-    owner        => 0,
-    group        => 0,
-    mode         => '0644',
-    force        => true,
-    purge        => true,
-    recurse      => true,
-    recurselimit => 1,
+  [
+    "${::yum::conf_dir}/pluginconf.d",
+    "${::yum::conf_dir}/vars",
+  ].each |Stdlib::Absolutepath $directory| {
+    file { $directory:
+      ensure       => directory,
+      owner        => 0,
+      group        => 0,
+      mode         => '0644',
+      force        => true,
+      purge        => true,
+      recurse      => true,
+      recurselimit => 1,
+    }
   }
 
   file { $::yum::conf_file:
@@ -87,6 +92,12 @@ class yum::config {
     yumrepo { $repo:
       *      => $attributes,
       notify => Class['::yum::clean'],
+    }
+  }
+
+  $::yum::variables.each |$variable, $attributes| {
+    ::yum::variable { $variable:
+      * => $attributes,
     }
   }
 }

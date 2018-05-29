@@ -27,6 +27,7 @@
 # @param purge_repos Whether to purge unmanaged repositories or not.
 # @param repo_dir
 # @param repos The default set of repositories.
+# @param variables
 #
 # @see puppet_classes::yum::plugin::etckeeper ::yum::plugin::etckeeper
 # @see puppet_classes::yum::plugin::fastestmirror ::yum::plugin::fastestmirror
@@ -37,6 +38,7 @@
 # @see puppet_classes::yum::plugin::security ::yum::plugin::security
 # @see puppet_classes::yum::plugin::versionlock ::yum::plugin::versionlock
 # @see puppet_defined_types::yum::plugin ::yum::plugin
+# @see puppet_defined_types::yum::variable ::yum::variable
 #
 # @since 1.0.0
 class yum (
@@ -47,6 +49,7 @@ class yum (
   Boolean                         $purge_repos       = $::yum::params::purge_repos,
   Stdlib::Absolutepath            $repo_dir          = $::yum::params::repo_dir,
   Hash[String, Hash[String, Any]] $repos             = $::yum::params::repos,
+  Hash[String, Hash[String, Any]] $variables         = $::yum::params::variables,
   Optional[String]                $bugtracker_url    = $::yum::params::bugtracker_url,
   Optional[Stdlib::Absolutepath]  $cachedir          = $::yum::params::cachedir,
   Optional[Integer[0, 10]]        $debuglevel        = $::yum::params::debuglevel,

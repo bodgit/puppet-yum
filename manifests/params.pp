@@ -21,6 +21,7 @@ class yum::params {
       $purge_repos                = true
       $repo_dir                   = '/etc/yum.repos.d'
       $rhnplugin_package_name     = 'yum-rhn-plugin'
+      $variables                  = {}
       $versionlock_package_name   = 'yum-plugin-versionlock'
 
       case $::facts['os']['release']['major'] {

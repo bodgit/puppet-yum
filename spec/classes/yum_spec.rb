@@ -30,6 +30,7 @@ describe 'yum' do
       it { is_expected.to contain_file('/etc/yum.conf') }
       it { is_expected.to contain_file('/etc/yum.repos.d') }
       it { is_expected.to contain_file('/etc/yum/pluginconf.d') }
+      it { is_expected.to contain_file('/etc/yum/vars') }
       it { is_expected.to contain_package('yum') }
       it { is_expected.to contain_resources('yum_conf') }
       it { is_expected.to contain_resources('yumrepo') }
