@@ -24,6 +24,7 @@
 # @param obsoletes
 # @param package_name The name of the package.
 # @param plugins
+# @param protected
 # @param purge_repos Whether to purge unmanaged repositories or not.
 # @param repo_dir
 # @param repos The default set of repositories.
@@ -38,6 +39,7 @@
 # @see puppet_classes::yum::plugin::security ::yum::plugin::security
 # @see puppet_classes::yum::plugin::versionlock ::yum::plugin::versionlock
 # @see puppet_defined_types::yum::plugin ::yum::plugin
+# @see puppet_defined_types::yum::protect ::yum::protect
 # @see puppet_defined_types::yum::variable ::yum::variable
 #
 # @since 1.0.0
@@ -46,6 +48,7 @@ class yum (
   Stdlib::Absolutepath            $conf_file         = $::yum::params::conf_file,
   Hash[String, Hash[String, Any]] $default_plugins   = $::yum::params::default_plugins,
   String                          $package_name      = $::yum::params::package_name,
+  Hash[String, Hash[String, Any]] $protected         = $::yum::params::protected,
   Boolean                         $purge_repos       = $::yum::params::purge_repos,
   Stdlib::Absolutepath            $repo_dir          = $::yum::params::repo_dir,
   Hash[String, Hash[String, Any]] $repos             = $::yum::params::repos,

@@ -26,10 +26,13 @@ class yum::params {
 
       case $::facts['os']['release']['major'] {
         '6': {
+          $protected             = {}
           $security_package_name = 'yum-plugin-security'
         }
         default: {
-          # noop
+          $protected = {
+            'systemd' => {},
+          }
         }
       }
 

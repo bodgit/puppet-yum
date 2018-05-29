@@ -10,6 +10,7 @@ class yum::config {
 
   [
     "${::yum::conf_dir}/pluginconf.d",
+    "${::yum::conf_dir}/protected.d",
     "${::yum::conf_dir}/vars",
   ].each |Stdlib::Absolutepath $directory| {
     file { $directory:
@@ -85,6 +86,12 @@ class yum::config {
     Resource['class'] {
       "::yum::plugin::${instance}": *      => $attributes;
       default:                      notify => Class['::yum::clean'];
+    }
+  }
+
+  $::yum::protected.each |$protect, $attributes| {
+    ::yum::protect { $protect:
+      * => $attributes,
     }
   }
 

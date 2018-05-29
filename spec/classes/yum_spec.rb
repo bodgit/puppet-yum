@@ -30,6 +30,7 @@ describe 'yum' do
       it { is_expected.to contain_file('/etc/yum.conf') }
       it { is_expected.to contain_file('/etc/yum.repos.d') }
       it { is_expected.to contain_file('/etc/yum/pluginconf.d') }
+      it { is_expected.to contain_file('/etc/yum/protected.d') }
       it { is_expected.to contain_file('/etc/yum/vars') }
       it { is_expected.to contain_package('yum') }
       it { is_expected.to contain_resources('yum_conf') }
@@ -42,6 +43,12 @@ describe 'yum' do
       it { is_expected.to contain_yum_conf('main/logfile').with_value('/var/log/yum.log') }
       it { is_expected.to contain_yum_conf('main/obsoletes').with_value(1) }
       it { is_expected.to contain_yum_conf('main/plugins').with_value(1) }
+
+      case facts[:os]['release']['major']
+      when '7'
+        it { is_expected.to contain_file('/etc/yum/protected.d/systemd.conf') }
+        it { is_expected.to contain_yum__protect('systemd') }
+      end
 
       case facts[:os]['name']
       when 'CentOS'
