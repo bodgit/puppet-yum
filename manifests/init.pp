@@ -1,14 +1,20 @@
-# Description
+# Manages the configuration of Yum.
 #
 # @example Declaring the class
 #   include ::yum
 #
+# @example Don't purge unmanaged repositories
+#   class { '::yum':
+#     purge_repos => false,
+#   }
+#
 # @param bugtracker_url
 # @param cachedir
-# @param conf_dir
-# @param conf_file
+# @param conf_dir The top-level configuration directory, usually `/etc/yum`.
+# @param conf_file The path to the main configuration file, usually
+#   `/etc/yum.conf`.
 # @param debuglevel
-# @param default_plugins
+# @param default_plugins The default set of plugins to manage.
 # @param distroverpkg
 # @param exactarch
 # @param gpgcheck
@@ -16,11 +22,11 @@
 # @param keepcache
 # @param logfile
 # @param obsoletes
-# @param package_name
+# @param package_name The name of the package.
 # @param plugins
-# @param purge_repos
+# @param purge_repos Whether to purge unmanaged repositories or not.
 # @param repo_dir
-# @param repos
+# @param repos The default set of repositories.
 #
 # @see puppet_classes::yum::plugin::etckeeper ::yum::plugin::etckeeper
 # @see puppet_classes::yum::plugin::fastestmirror ::yum::plugin::fastestmirror

@@ -1,6 +1,8 @@
-# Description
+# Manage the Yum etckeeper plugin.
 #
-# @example
+# @example Declaring the class
+#   include ::yum
+#   include ::yum::plugin::etckeeper
 #
 # @param ensure
 # @param enable

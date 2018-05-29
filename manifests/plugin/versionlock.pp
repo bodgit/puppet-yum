@@ -1,4 +1,4 @@
-# Description
+# Manage the Yum versionlock plugin.
 #
 # @example Declaring the class
 #   include ::yum
@@ -20,7 +20,7 @@ class yum::plugin::versionlock (
   Boolean                   $enable           = true,
   String                    $package_name     = $::yum::params::versionlock_package_name,
   Optional[Boolean]         $follow_obsoletes = undef,
-  Stdlib::Absolutepath      $locklist         = '/etc/yum/pluginconf.d/versionlock.list',
+  Stdlib::Absolutepath      $locklist         = "${::yum::conf_dir}/pluginconf.d/versionlock.list",
 ) inherits ::yum::params {
 
   if ! defined(Class['::yum']) {

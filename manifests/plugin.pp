@@ -1,9 +1,16 @@
-# Description
+# Manage per-plugin configuration files.
 #
-# @example
+# @example Configure an example plugin
+#   include ::yum
+#   ::yum::plugin { 'example':
+#     content => @(EOS/L),
+#       [main]
+#       enabled = 1
+#       | EOS
+#   }
 #
-# @param content
-# @param plugin
+# @param content The content of the plugin configuration file.
+# @param plugin The name of the plugin.
 #
 # @see puppet_classes::yum ::yum
 #
@@ -17,7 +24,7 @@ define yum::plugin (
     fail('You must include the yum base class before using any yum defined resources')
   }
 
-  file { "/etc/yum/pluginconf.d/${plugin}.conf":
+  file { "${::yum::conf_dir}/pluginconf.d/${plugin}.conf":
     ensure  => file,
     owner   => 0,
     group   => 0,

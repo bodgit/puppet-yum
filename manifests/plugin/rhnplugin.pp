@@ -1,6 +1,8 @@
-# Description
+# Manage the Yum RHN plugin
 #
-# @example
+# @example Declaring the class
+#   include ::yum
+#   include ::yum::plugin::rhnplugin
 #
 # @param ensure
 # @param enable

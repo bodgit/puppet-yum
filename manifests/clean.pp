@@ -1,4 +1,4 @@
-# Description
+# Class for invalidating the Yum caches.
 #
 # @example Declaring the class
 #   include ::yum

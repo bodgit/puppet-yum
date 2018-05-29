@@ -1,6 +1,13 @@
-# Description
+# Manage entries in the Yum versionlock plugin lock list.
 #
-# @example
+# @example Exclude a particular package/version from being installed
+#   include ::yum
+#   include ::yum::plugin::versionlock
+#   ::yum::plugin::versionlock::entry { 'kernel':
+#     packages => [
+#       '!0:kernel-2.6.32-696.3.2.el6.*',
+#     ],
+#   }
 #
 # @param packages
 #

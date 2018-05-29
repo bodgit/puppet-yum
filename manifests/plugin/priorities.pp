@@ -1,6 +1,8 @@
-# Description
+# Manage the Yum priorities plugin.
 #
-# @example
+# @example Declaring the class
+#   include ::yum
+#   include ::yum::plugin::priorities
 #
 # @param ensure
 # @param enable

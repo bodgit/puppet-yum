@@ -1,6 +1,8 @@
-# Description
+# Manage the Yum protectbase plugin.
 #
-# @example
+# @example Declaring the class
+#   include ::yum
+#   include ::yum::plugin::protectbase
 #
 # @param ensure
 # @param enable

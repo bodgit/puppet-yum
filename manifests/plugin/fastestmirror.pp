@@ -1,6 +1,8 @@
-# Description
+# Manage the Yum fastestmirror plugin.
 #
-# @example
+# @example Declaring the class
+#   include ::yum
+#   include ::yum::plugin::fastestmirror
 #
 # @param ensure
 # @param enable
