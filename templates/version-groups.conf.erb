@@ -1,0 +1,6 @@
+
+[<%= @group %>]
+<% unless @run_with_packages.nil? -%>
+run_with_packages = <%= @run_with_packages ? 1 : 0 %>
+<% end -%>
+pkglist = <%= @pkglist.join(', ') %>

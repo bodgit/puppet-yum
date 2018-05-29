@@ -89,6 +89,12 @@ class yum::config {
     }
   }
 
+  $::yum::groups.each |$group, $attributes| {
+    ::yum::group { $group:
+      * => $attributes,
+    }
+  }
+
   $::yum::protected.each |$protect, $attributes| {
     ::yum::protect { $protect:
       * => $attributes,

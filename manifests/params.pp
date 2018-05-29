@@ -10,6 +10,25 @@ class yum::params {
       $exactarch                  = true
       $fastestmirror_package_name = 'yum-plugin-fastestmirror'
       $gpgcheck                   = true
+      $groups                     = {
+        'yum' => {
+          'run_with_packages' => true,
+          'pkglist'           => [
+            'glibc',
+            'sqlite',
+            'libcurl',
+            'nss',
+            'yum-metadata-parser',
+            'rpm',
+            'rpm-libs',
+            'rpm-python',
+            'python',
+            'python-iniparse',
+            'python-urlgrabber',
+            'python-pycurl',
+          ],
+        },
+      }
       $kabi_package_name          = 'kabi-yum-plugins'
       $keepcache                  = false
       $logfile                    = '/var/log/yum.log'

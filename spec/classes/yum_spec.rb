@@ -27,6 +27,8 @@ describe 'yum' do
       it { is_expected.to contain_class('yum::config') }
       it { is_expected.to contain_class('yum::install') }
       it { is_expected.to contain_class('yum::params') }
+      it { is_expected.to contain_concat('/etc/yum/version-groups.conf') }
+      it { is_expected.to contain_concat__fragment('/etc/yum/version-groups.conf yum') }
       it { is_expected.to contain_file('/etc/yum.conf') }
       it { is_expected.to contain_file('/etc/yum.repos.d') }
       it { is_expected.to contain_file('/etc/yum/pluginconf.d') }
@@ -43,6 +45,7 @@ describe 'yum' do
       it { is_expected.to contain_yum_conf('main/logfile').with_value('/var/log/yum.log') }
       it { is_expected.to contain_yum_conf('main/obsoletes').with_value(1) }
       it { is_expected.to contain_yum_conf('main/plugins').with_value(1) }
+      it { is_expected.to contain_yum__group('yum') }
 
       case facts[:os]['release']['major']
       when '7'

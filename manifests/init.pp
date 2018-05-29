@@ -18,6 +18,7 @@
 # @param distroverpkg
 # @param exactarch
 # @param gpgcheck
+# @param groups
 # @param installonly_limit
 # @param keepcache
 # @param logfile
@@ -38,6 +39,7 @@
 # @see puppet_classes::yum::plugin::rhnplugin ::yum::plugin::rhnplugin
 # @see puppet_classes::yum::plugin::security ::yum::plugin::security
 # @see puppet_classes::yum::plugin::versionlock ::yum::plugin::versionlock
+# @see puppet_defined_types::yum::group ::yum::group
 # @see puppet_defined_types::yum::plugin ::yum::plugin
 # @see puppet_defined_types::yum::protect ::yum::protect
 # @see puppet_defined_types::yum::variable ::yum::variable
@@ -47,6 +49,7 @@ class yum (
   Stdlib::Absolutepath            $conf_dir          = $::yum::params::conf_dir,
   Stdlib::Absolutepath            $conf_file         = $::yum::params::conf_file,
   Hash[String, Hash[String, Any]] $default_plugins   = $::yum::params::default_plugins,
+  Hash[String, Hash[String, Any]] $groups            = $::yum::params::groups,
   String                          $package_name      = $::yum::params::package_name,
   Hash[String, Hash[String, Any]] $protected         = $::yum::params::protected,
   Boolean                         $purge_repos       = $::yum::params::purge_repos,
