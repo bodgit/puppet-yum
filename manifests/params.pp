@@ -249,7 +249,7 @@ class yum::params {
               }
             }
             default: {
-              $repos = {} # FIXME or fail?
+              fail("The ${module_name} module is not supported on ${::facts['os']['name']} ${::facts['os']['release']['major']}.")
             }
           }
         }

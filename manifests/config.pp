@@ -9,6 +9,8 @@ class yum::config {
   }
 
   [
+    $::yum::conf_dir,
+    "${::yum::conf_dir}/fssnap.d",
     "${::yum::conf_dir}/pluginconf.d",
     "${::yum::conf_dir}/protected.d",
     "${::yum::conf_dir}/vars",
