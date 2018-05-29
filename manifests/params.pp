@@ -41,10 +41,8 @@ class yum::params {
             '6': {
               $bugtracker_url  = 'http://bugs.centos.org/set_project.php?project_id=19&ref=http://bugs.centos.org/bug_report_page.php?category=yum'
               $default_plugins = {
-                'class' => {
-                  '::yum::plugin::fastestmirror' => {},
-                  '::yum::plugin::security'      => {},
-                },
+                'fastestmirror' => {},
+                'security'      => {},
               }
               $repos           = ['base', 'centosplus', 'contrib', 'extras', 'updates'].reduce({}) |Hash $memo, String $repo| {
                 $descr = $repo ? {
@@ -123,9 +121,7 @@ class yum::params {
             '7': {
               $bugtracker_url  = 'http://bugs.centos.org/set_project.php?project_id=23&ref=http://bugs.centos.org/bug_report_page.php?category=yum'
               $default_plugins = {
-                'class' => {
-                  '::yum::plugin::fastestmirror' => {},
-                },
+                'fastestmirror' => {},
               }
               $repos           = ['base', 'centosplus', 'extras', 'fasttrack', 'updates'].reduce({}) |Hash $memo, String $repo| {
                 $descr = $repo ? {
@@ -237,9 +233,7 @@ class yum::params {
         'RedHat': {
           $bugtracker_url    = undef
           $default_plugins   = {
-            'class' => {
-              '::yum::plugin::rhnplugin' => {},
-            },
+            'rhnplugin' => {},
           }
           $distroverpkg      = undef
           $installonly_limit = 3

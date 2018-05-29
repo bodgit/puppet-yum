@@ -76,18 +76,17 @@ class yum::config {
     notify => Class['::yum::clean'],
   }
 
+  $::yum::default_plugins.each |$instance, $attributes| {
+    Resource['class'] {
+      "::yum::plugin::${instance}": *      => $attributes;
+      default:                      notify => Class['::yum::clean'];
+    }
+  }
+
   $::yum::repos.each |$repo, $attributes| {
     yumrepo { $repo:
       *      => $attributes,
       notify => Class['::yum::clean'],
-    }
-  }
-
-  $::yum::default_plugins.each |$type, $resources| {
-    $resources.each |$instance, $attributes| {
-      Resource[$type] {
-        $instance: * => $attributes,
-      }
     }
   }
 }
