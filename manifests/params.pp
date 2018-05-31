@@ -40,7 +40,6 @@ class yum::params {
       $purge_repos                = true
       $repo_dir                   = '/etc/yum.repos.d'
       $rhnplugin_package_name     = 'yum-rhn-plugin'
-      $variables                  = {}
       $versionlock_package_name   = 'yum-plugin-versionlock'
 
       case $::facts['os']['release']['major'] {
@@ -59,6 +58,11 @@ class yum::params {
         'CentOS': {
           $distroverpkg      = 'centos-release'
           $installonly_limit = 5
+          $variables         = {
+            'infra' => {
+              'value' => 'genclo',
+            },
+          }
 
           case $::facts['os']['release']['major'] {
             '6': {
@@ -261,6 +265,7 @@ class yum::params {
           $distroverpkg      = undef
           $installonly_limit = 3
           $repos             = {} # FIXME
+          $variables         = {}
         }
         default: {
           $bugtracker_url    = undef
@@ -268,6 +273,7 @@ class yum::params {
           $distroverpkg      = undef
           $installonly_limit = 3
           $repos             = {} # FIXME
+          $variables         = {}
         }
       }
     }
