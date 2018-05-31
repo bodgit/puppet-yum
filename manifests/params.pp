@@ -42,6 +42,7 @@ class yum::params {
       $purge_repos                = true
       $repo_dir                   = '/etc/yum.repos.d'
       $rhnplugin_package_name     = 'yum-rhn-plugin'
+      $utils_package_name         = 'yum-utils'
       $variable_dir               = "${conf_dir}/vars"
       $versionlock_package_name   = 'yum-plugin-versionlock'
 

@@ -43,6 +43,7 @@
 # @see puppet_classes::yum::plugin::rhnplugin ::yum::plugin::rhnplugin
 # @see puppet_classes::yum::plugin::security ::yum::plugin::security
 # @see puppet_classes::yum::plugin::versionlock ::yum::plugin::versionlock
+# @see puppet_classes::yum::utils ::yum::utils
 # @see puppet_defined_types::yum::group ::yum::group
 # @see puppet_defined_types::yum::plugin ::yum::plugin
 # @see puppet_defined_types::yum::protect ::yum::protect
