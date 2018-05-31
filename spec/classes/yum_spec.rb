@@ -32,7 +32,6 @@ describe 'yum' do
       it { is_expected.to contain_file('/etc/yum') }
       it { is_expected.to contain_file('/etc/yum.conf') }
       it { is_expected.to contain_file('/etc/yum.repos.d') }
-      it { is_expected.to contain_file('/etc/yum/fssnap.d') }
       it { is_expected.to contain_file('/etc/yum/pluginconf.d') }
       it { is_expected.to contain_file('/etc/yum/protected.d') }
       it { is_expected.to contain_file('/etc/yum/vars') }
@@ -51,6 +50,7 @@ describe 'yum' do
 
       case facts[:os]['release']['major']
       when '7'
+        it { is_expected.to contain_file('/etc/yum/fssnap.d') }
         it { is_expected.to contain_file('/etc/yum/protected.d/systemd.conf') }
         it { is_expected.to contain_yum__protect('systemd') }
       end

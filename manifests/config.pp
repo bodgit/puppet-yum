@@ -8,13 +8,13 @@ class yum::config {
     mode   => '0644',
   }
 
-  [
+  delete_undef_values([
     $::yum::conf_dir,
-    "${::yum::conf_dir}/fssnap.d",
-    "${::yum::conf_dir}/pluginconf.d",
-    "${::yum::conf_dir}/protected.d",
-    "${::yum::conf_dir}/vars",
-  ].each |Stdlib::Absolutepath $directory| {
+    $::yum::fssnap_dir,
+    $::yum::pluginconf_dir,
+    $::yum::protected_dir,
+    $::yum::variable_dir,
+  ]).each |Stdlib::Absolutepath $directory| {
     file { $directory:
       ensure       => directory,
       owner        => 0,

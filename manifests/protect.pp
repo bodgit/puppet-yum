@@ -17,7 +17,7 @@ define yum::protect (
     fail('You must include the yum base class before using any yum defined resources')
   }
 
-  file { "${::yum::conf_dir}/protected.d/${title}.conf":
+  file { "${::yum::protected_dir}/${title}.conf":
     ensure  => file,
     owner   => 0,
     group   => 0,

@@ -34,21 +34,26 @@ class yum::params {
       $logfile                    = '/var/log/yum.log'
       $obsoletes                  = true
       $package_name               = 'yum'
+      $pluginconf_dir             = "${conf_dir}/pluginconf.d"
       $plugins                    = true
       $priorities_package_name    = 'yum-plugin-priorities'
       $protectbase_package_name   = 'yum-plugin-protectbase'
+      $protected_dir              = "${conf_dir}/protected.d"
       $purge_repos                = true
       $repo_dir                   = '/etc/yum.repos.d'
       $rhnplugin_package_name     = 'yum-rhn-plugin'
+      $variable_dir               = "${conf_dir}/vars"
       $versionlock_package_name   = 'yum-plugin-versionlock'
 
       case $::facts['os']['release']['major'] {
         '6': {
+          $fssnap_dir            = undef
           $protected             = {}
           $security_package_name = 'yum-plugin-security'
         }
         default: {
-          $protected = {
+          $fssnap_dir = "${conf_dir}/fssnap.d"
+          $protected  = {
             'systemd' => {},
           }
         }

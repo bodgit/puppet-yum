@@ -21,7 +21,7 @@ define yum::variable (
     fail('You must include the yum base class before using any yum defined resources')
   }
 
-  file { "${::yum::conf_dir}/vars/${variable}":
+  file { "${::yum::variable_dir}/${variable}":
     ensure  => file,
     owner   => 0,
     group   => 0,

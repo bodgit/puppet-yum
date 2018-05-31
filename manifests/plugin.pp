@@ -24,7 +24,7 @@ define yum::plugin (
     fail('You must include the yum base class before using any yum defined resources')
   }
 
-  file { "${::yum::conf_dir}/pluginconf.d/${plugin}.conf":
+  file { "${::yum::pluginconf_dir}/${plugin}.conf":
     ensure  => file,
     owner   => 0,
     group   => 0,

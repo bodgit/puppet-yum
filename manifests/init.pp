@@ -17,6 +17,7 @@
 # @param default_plugins The default set of plugins to manage.
 # @param distroverpkg
 # @param exactarch
+# @param fssnap_dir
 # @param gpgcheck
 # @param groups
 # @param installonly_limit
@@ -24,12 +25,15 @@
 # @param logfile
 # @param obsoletes
 # @param package_name The name of the package.
+# @param pluginconf_dir
 # @param plugins
 # @param protected
+# @param protected_dir
 # @param purge_repos Whether to purge unmanaged repositories or not.
 # @param repo_dir
 # @param repos The default set of repositories.
 # @param variables
+# @param variable_dir
 #
 # @see puppet_classes::yum::plugin::etckeeper ::yum::plugin::etckeeper
 # @see puppet_classes::yum::plugin::fastestmirror ::yum::plugin::fastestmirror
@@ -49,12 +53,16 @@ class yum (
   Stdlib::Absolutepath            $conf_dir          = $::yum::params::conf_dir,
   Stdlib::Absolutepath            $conf_file         = $::yum::params::conf_file,
   Hash[String, Hash[String, Any]] $default_plugins   = $::yum::params::default_plugins,
+  Optional[Stdlib::Absolutepath]  $fssnap_dir        = $::yum::params::fssnap_dir,
   Hash[String, Hash[String, Any]] $groups            = $::yum::params::groups,
   String                          $package_name      = $::yum::params::package_name,
+  Stdlib::Absolutepath            $pluginconf_dir    = $::yum::params::pluginconf_dir,
   Hash[String, Hash[String, Any]] $protected         = $::yum::params::protected,
+  Stdlib::Absolutepath            $protected_dir     = $::yum::params::protected_dir,
   Boolean                         $purge_repos       = $::yum::params::purge_repos,
   Stdlib::Absolutepath            $repo_dir          = $::yum::params::repo_dir,
   Hash[String, Hash[String, Any]] $repos             = $::yum::params::repos,
+  Stdlib::Absolutepath            $variable_dir      = $::yum::params::variable_dir,
   Hash[String, Hash[String, Any]] $variables         = $::yum::params::variables,
   Optional[String]                $bugtracker_url    = $::yum::params::bugtracker_url,
   Optional[Stdlib::Absolutepath]  $cachedir          = $::yum::params::cachedir,
