@@ -8,8 +8,14 @@ class yum::config {
     mode   => '0644',
   }
 
+  file { $::yum::conf_dir:
+    ensure => directory,
+    owner  => 0,
+    group  => 0,
+    mode   => '0644',
+  }
+
   delete_undef_values([
-    $::yum::conf_dir,
     $::yum::fssnap_dir,
     $::yum::pluginconf_dir,
     $::yum::protected_dir,
