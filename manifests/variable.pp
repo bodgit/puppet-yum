@@ -26,6 +26,6 @@ define yum::variable (
     owner   => 0,
     group   => 0,
     mode    => '0644',
-    content => $value,
+    content => "${value}\n",
   }
 }
