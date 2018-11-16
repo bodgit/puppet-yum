@@ -15,12 +15,14 @@ class yum::config {
     mode   => '0644',
   }
 
-  delete_undef_values([
+  [
     $::yum::fssnap_dir,
     $::yum::pluginconf_dir,
     $::yum::protected_dir,
     $::yum::variable_dir,
-  ]).each |Stdlib::Absolutepath $directory| {
+  ].filter |$x| {
+    $x =~ NotUndef
+  }.each |Stdlib::Absolutepath $directory| {
     file { $directory:
       ensure       => directory,
       owner        => 0,
@@ -48,37 +50,39 @@ class yum::config {
     purge => true,
   }
 
-  $config = delete_undef_values({
-    'main/bugtracker_url'    => $::yum::bugtracker_url,
-    'main/cachedir'          => $::yum::cachedir,
-    'main/debuglevel'        => $::yum::debuglevel,
-    'main/distroverpkg'      => $::yum::distroverpkg,
-    'main/exactarch'         => $::yum::exactarch ? {
+  $config = {
+    'bugtracker_url'    => $::yum::bugtracker_url,
+    'cachedir'          => $::yum::cachedir,
+    'debuglevel'        => $::yum::debuglevel,
+    'distroverpkg'      => $::yum::distroverpkg,
+    'exactarch'         => $::yum::exactarch ? {
       undef   => undef,
       default => bool2num($::yum::exactarch),
     },
-    'main/gpgcheck'          => $::yum::gpgcheck ? {
+    'gpgcheck'          => $::yum::gpgcheck ? {
       undef   => undef,
       default => bool2num($::yum::gpgcheck),
     },
-    'main/installonly_limit' => $::yum::installonly_limit,
-    'main/keepcache'         => $::yum::keepcache ? {
+    'installonly_limit' => $::yum::installonly_limit,
+    'keepcache'         => $::yum::keepcache ? {
       undef   => undef,
       default => bool2num($::yum::keepcache),
     },
-    'main/logfile'           => $::yum::logfile,
-    'main/obsoletes'         => $::yum::obsoletes ? {
+    'logfile'           => $::yum::logfile,
+    'obsoletes'         => $::yum::obsoletes ? {
       undef   => undef,
       default => bool2num($::yum::obsoletes),
     },
-    'main/plugins'           => $::yum::plugins ? {
+    'plugins'           => $::yum::plugins ? {
       undef   => undef,
       default => bool2num($::yum::plugins),
     },
-  })
+  }.filter |$x| {
+    $x[1] =~ NotUndef
+  }
 
   $config.each |$setting, $value| {
-    yum_conf { $setting:
+    yum_conf { "main/${setting}":
       value => $value,
     }
   }
@@ -92,8 +96,8 @@ class yum::config {
 
   $::yum::default_plugins.each |$instance, $attributes| {
     Resource['class'] {
-      "::yum::plugin::${instance}": *      => $attributes;
-      default:                      notify => Class['::yum::clean'];
+      "::${module_name}::plugin::${instance}": *      => $attributes;
+      default:                                 notify => Class['::yum::clean'];
     }
   }
 
