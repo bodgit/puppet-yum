@@ -15,7 +15,7 @@ describe 'yum::clean' do
       it { is_expected.to compile.with_all_deps }
 
       it { is_expected.to contain_class('yum::clean') }
-      it { is_expected.to contain_exec('yum clean all') }
+      it { is_expected.to contain_exec("yum clean --enablerepo='*' all") }
     end
   end
 end

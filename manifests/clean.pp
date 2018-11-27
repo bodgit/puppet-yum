@@ -15,7 +15,7 @@ class yum::clean {
     fail('You must include the yum base class before using the yum::clean class')
   }
 
-  exec { 'yum clean all':
+  exec { "yum clean --enablerepo='*' all":
     path        => $::path,
     refreshonly => true,
   }

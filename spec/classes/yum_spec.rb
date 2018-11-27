@@ -23,12 +23,13 @@ describe 'yum' do
       it { is_expected.to compile.with_all_deps }
 
       it { is_expected.to contain_class('yum') }
-      it { is_expected.to contain_class('yum::clean') }
       it { is_expected.to contain_class('yum::config') }
       it { is_expected.to contain_class('yum::install') }
       it { is_expected.to contain_class('yum::params') }
       it { is_expected.to contain_concat('/etc/yum/version-groups.conf') }
       it { is_expected.to contain_concat__fragment('/etc/yum/version-groups.conf yum') }
+      it { is_expected.to contain_exec("yum clean --enablerepo='*' expire-cache packages headers metadata dbcache rpmdb") }
+      it { is_expected.to contain_exec('yum clean plugins') }
       it { is_expected.to contain_file('/etc/yum') }
       it { is_expected.to contain_file('/etc/yum.conf') }
       it { is_expected.to contain_file('/etc/yum.repos.d') }
