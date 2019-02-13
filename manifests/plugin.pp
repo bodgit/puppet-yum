@@ -30,6 +30,5 @@ define yum::plugin (
     group   => 0,
     mode    => '0644',
     content => $content,
-    notify  => Exec['yum clean plugins'],
   }
 }

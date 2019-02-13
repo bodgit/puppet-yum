@@ -69,6 +69,7 @@ class yum::config {
       default => bool2num($::yum::keepcache),
     },
     'logfile'           => $::yum::logfile,
+    'metadata_expire'   => $::yum::metadata_expire,
     'obsoletes'         => $::yum::obsoletes ? {
       undef   => undef,
       default => bool2num($::yum::obsoletes),
@@ -87,23 +88,8 @@ class yum::config {
     }
   }
 
-  exec { "yum clean --enablerepo='*' expire-cache packages headers metadata dbcache rpmdb":
-    path        => $::path,
-    refreshonly => true,
-  }
-
-  exec { 'yum clean plugins':
-    path        => $::path,
-    refreshonly => true,
-  }
-
-  Yumrepo <| tag == $module_name |>
-    ~> Exec["yum clean --enablerepo='*' expire-cache packages headers metadata dbcache rpmdb"]
-    -> Package <| tag == $module_name and title != $::yum::package_name |>
-
   resources { 'yumrepo':
-    purge  => $::yum::purge_repos,
-    notify => Exec["yum clean --enablerepo='*' expire-cache packages headers metadata dbcache rpmdb"],
+    purge => $::yum::purge_repos,
   }
 
   $::yum::default_plugins.each |$instance, $attributes| {
