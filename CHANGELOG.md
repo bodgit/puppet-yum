@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.0.4](https://github.com/bodgit/puppet-yum/tree/v1.0.4) (2019-02-13)
+[Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.3...v1.0.4)
+
+**Implemented enhancements:**
+
+- Update for CentOS 7.6 [\#4](https://github.com/bodgit/puppet-yum/issues/4)
+- Support metadata\_expire config option [\#3](https://github.com/bodgit/puppet-yum/issues/3)
+
 ## [v1.0.3](https://github.com/bodgit/puppet-yum/tree/v1.0.3) (2018-11-27)
 [Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.2...v1.0.3)
 
