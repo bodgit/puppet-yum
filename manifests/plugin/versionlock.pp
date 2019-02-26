@@ -31,6 +31,9 @@ class yum::plugin::versionlock (
 
   package { $package_name:
     ensure => $ensure,
+    tag    => [
+      "bodgit::${module_name}",
+    ],
   }
 
   if $ensure == 'present' {

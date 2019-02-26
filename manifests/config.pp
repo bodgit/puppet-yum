@@ -112,9 +112,15 @@ class yum::config {
 
   $::yum::repos.each |$repo, $attributes| {
     yumrepo { $repo:
-      * => $attributes,
+      *   => $attributes,
+      tag => [
+        "bodgit::${module_name}",
+      ],
     }
   }
+
+  Yumrepo <| tag == "bodgit::${module_name}" |>
+    -> Package <| tag == "bodgit::${module_name}" |>
 
   $::yum::variables.each |$variable, $attributes| {
     ::yum::variable { $variable:

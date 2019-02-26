@@ -24,6 +24,9 @@ class yum::plugin::security (
 
   package { $package_name:
     ensure => present,
+    tag    => [
+      "bodgit::${module_name}",
+    ],
   }
 
   if $ensure == 'present' {

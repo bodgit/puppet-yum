@@ -44,6 +44,9 @@ class yum::plugin::fastestmirror (
 
   package { $package_name:
     ensure => $ensure,
+    tag    => [
+      "bodgit::${module_name}",
+    ],
   }
 
   if $ensure == 'present' {

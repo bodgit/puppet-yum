@@ -24,6 +24,9 @@ class yum::plugin::priorities (
 
   package { $package_name:
     ensure => $ensure,
+    tag    => [
+      "bodgit::${module_name}",
+    ],
   }
 
   if $ensure == 'present' {
