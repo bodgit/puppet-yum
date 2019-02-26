@@ -9,6 +9,7 @@
 # @param package_name
 # @param follow_obsoletes
 # @param locklist
+# @param show_hint
 #
 # @see puppet_classes::yum ::yum
 # @see puppet_defined_types::yum::plugin ::yum::plugin
@@ -21,6 +22,7 @@ class yum::plugin::versionlock (
   String                    $package_name     = $::yum::params::versionlock_package_name,
   Optional[Boolean]         $follow_obsoletes = undef,
   Stdlib::Absolutepath      $locklist         = "${::yum::pluginconf_dir}/versionlock.list",
+  Optional[Boolean]         $show_hint        = undef,
 ) inherits ::yum::params {
 
   if ! defined(Class['::yum']) {

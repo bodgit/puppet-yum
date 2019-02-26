@@ -4,3 +4,6 @@ locklist = <%= @locklist %>
 <% unless @follow_obsoletes.nil? -%>
 follow_obsoletes = <%= @follow_obsoletes ? 1 : 0 %>
 <% end -%>
+<% unless @show_hint.nil? -%>
+show_hint = <%= @show_hint ? 1 : 0 %>
+<% end -%>
