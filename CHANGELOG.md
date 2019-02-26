@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.1.0](https://github.com/bodgit/puppet-yum/tree/v1.1.0) (2019-02-26)
+[Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.4...v1.1.0)
+
+**Implemented enhancements:**
+
+- versionlock plugin has show\_hint boolean [\#5](https://github.com/bodgit/puppet-yum/issues/5)
+- Make plugin packages depend on repo configurations [\#2](https://github.com/bodgit/puppet-yum/issues/2)
+
 ## [v1.0.4](https://github.com/bodgit/puppet-yum/tree/v1.0.4) (2019-02-13)
 [Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.3...v1.0.4)
 
@@ -10,10 +18,6 @@
 
 ## [v1.0.3](https://github.com/bodgit/puppet-yum/tree/v1.0.3) (2018-11-27)
 [Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.2...v1.0.3)
-
-**Implemented enhancements:**
-
-- Make plugin packages depend on repo configurations [\#2](https://github.com/bodgit/puppet-yum/issues/2)
 
 ## [v1.0.2](https://github.com/bodgit/puppet-yum/tree/v1.0.2) (2018-11-16)
 [Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.1...v1.0.2)
