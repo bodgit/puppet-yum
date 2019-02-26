@@ -309,6 +309,19 @@
   
     <li>
       
+        <span class='name'>metadata_expire</span>
+      
+      
+        <span class='type'>(<tt>Optional[Variant[Integer[0], Pattern[/^\d+[dhm]?$/], Enum['never']]]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>obsoletes</span>
       
       
@@ -522,7 +535,6 @@
         <pre class="lines">
 
 
-53
 54
 55
 56
@@ -554,37 +566,40 @@
 82
 83
 84
-85</pre>
+85
+86
+87</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 53</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 54</span>
 
 class yum (
-  Stdlib::Absolutepath            $conf_dir          = $::yum::params::conf_dir,
-  Stdlib::Absolutepath            $conf_file         = $::yum::params::conf_file,
-  Hash[String, Hash[String, Any]] $default_plugins   = $::yum::params::default_plugins,
-  Optional[Stdlib::Absolutepath]  $fssnap_dir        = $::yum::params::fssnap_dir,
-  Hash[String, Hash[String, Any]] $groups            = $::yum::params::groups,
-  String                          $package_name      = $::yum::params::package_name,
-  Stdlib::Absolutepath            $pluginconf_dir    = $::yum::params::pluginconf_dir,
-  Hash[String, Hash[String, Any]] $protected         = $::yum::params::protected,
-  Stdlib::Absolutepath            $protected_dir     = $::yum::params::protected_dir,
-  Boolean                         $purge_repos       = $::yum::params::purge_repos,
-  Stdlib::Absolutepath            $repo_dir          = $::yum::params::repo_dir,
-  Hash[String, Hash[String, Any]] $repos             = $::yum::params::repos,
-  Stdlib::Absolutepath            $variable_dir      = $::yum::params::variable_dir,
-  Hash[String, Hash[String, Any]] $variables         = $::yum::params::variables,
-  Optional[String]                $bugtracker_url    = $::yum::params::bugtracker_url,
-  Optional[Stdlib::Absolutepath]  $cachedir          = $::yum::params::cachedir,
-  Optional[Integer[0, 10]]        $debuglevel        = $::yum::params::debuglevel,
-  Optional[String]                $distroverpkg      = $::yum::params::distroverpkg,
-  Optional[Boolean]               $exactarch         = $::yum::params::exactarch,
-  Optional[Boolean]               $gpgcheck          = $::yum::params::gpgcheck,
-  Optional[Integer[0]]            $installonly_limit = $::yum::params::installonly_limit,
-  Optional[Boolean]               $keepcache         = $::yum::params::keepcache,
-  Optional[Stdlib::Absolutepath]  $logfile           = $::yum::params::logfile,
-  Optional[Boolean]               $obsoletes         = $::yum::params::obsoletes,
-  Optional[Boolean]               $plugins           = $::yum::params::plugins,
+  Stdlib::Absolutepath                                                 $conf_dir          = $::yum::params::conf_dir,
+  Stdlib::Absolutepath                                                 $conf_file         = $::yum::params::conf_file,
+  Hash[String, Hash[String, Any]]                                      $default_plugins   = $::yum::params::default_plugins,
+  Optional[Stdlib::Absolutepath]                                       $fssnap_dir        = $::yum::params::fssnap_dir,
+  Hash[String, Hash[String, Any]]                                      $groups            = $::yum::params::groups,
+  String                                                               $package_name      = $::yum::params::package_name,
+  Stdlib::Absolutepath                                                 $pluginconf_dir    = $::yum::params::pluginconf_dir,
+  Hash[String, Hash[String, Any]]                                      $protected         = $::yum::params::protected,
+  Stdlib::Absolutepath                                                 $protected_dir     = $::yum::params::protected_dir,
+  Boolean                                                              $purge_repos       = $::yum::params::purge_repos,
+  Stdlib::Absolutepath                                                 $repo_dir          = $::yum::params::repo_dir,
+  Hash[String, Hash[String, Any]]                                      $repos             = $::yum::params::repos,
+  Stdlib::Absolutepath                                                 $variable_dir      = $::yum::params::variable_dir,
+  Hash[String, Hash[String, Any]]                                      $variables         = $::yum::params::variables,
+  Optional[String]                                                     $bugtracker_url    = $::yum::params::bugtracker_url,
+  Optional[Stdlib::Absolutepath]                                       $cachedir          = $::yum::params::cachedir,
+  Optional[Integer[0, 10]]                                             $debuglevel        = $::yum::params::debuglevel,
+  Optional[String]                                                     $distroverpkg      = $::yum::params::distroverpkg,
+  Optional[Boolean]                                                    $exactarch         = $::yum::params::exactarch,
+  Optional[Boolean]                                                    $gpgcheck          = $::yum::params::gpgcheck,
+  Optional[Integer[0]]                                                 $installonly_limit = $::yum::params::installonly_limit,
+  Optional[Boolean]                                                    $keepcache         = $::yum::params::keepcache,
+  Optional[Stdlib::Absolutepath]                                       $logfile           = $::yum::params::logfile,
+  Optional[Variant[Integer[0], Pattern[/^\d+[dhm]?$/], Enum[&#39;never&#39;]]] $metadata_expire   = undef,
+  Optional[Boolean]                                                    $obsoletes         = $::yum::params::obsoletes,
+  Optional[Boolean]                                                    $plugins           = $::yum::params::plugins,
 ) inherits ::yum::params {
 
   contain ::yum::install

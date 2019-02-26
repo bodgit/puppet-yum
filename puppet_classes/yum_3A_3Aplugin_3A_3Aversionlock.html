@@ -166,6 +166,19 @@ include ::yum::plugin::versionlock</code></pre>
       
     </li>
   
+    <li>
+      
+        <span class='name'>show_hint</span>
+      
+      
+        <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+    </li>
+  
 </ul>
 
 
@@ -203,7 +216,6 @@ include ::yum::plugin::versionlock</code></pre>
         <pre class="lines">
 
 
-18
 19
 20
 21
@@ -231,10 +243,15 @@ include ::yum::plugin::versionlock</code></pre>
 43
 44
 45
-46</pre>
+46
+47
+48
+49
+50
+51</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/plugin/versionlock.pp', line 18</span>
+        <pre class="code"><span class="info file"># File 'manifests/plugin/versionlock.pp', line 19</span>
 
 class yum::plugin::versionlock (
   Enum[&#39;present&#39;, &#39;absent&#39;] $ensure           = &#39;present&#39;,
@@ -242,6 +259,7 @@ class yum::plugin::versionlock (
   String                    $package_name     = $::yum::params::versionlock_package_name,
   Optional[Boolean]         $follow_obsoletes = undef,
   Stdlib::Absolutepath      $locklist         = &quot;${::yum::pluginconf_dir}/versionlock.list&quot;,
+  Optional[Boolean]         $show_hint        = undef,
 ) inherits ::yum::params {
 
   if ! defined(Class[&#39;::yum&#39;]) {
@@ -250,6 +268,9 @@ class yum::plugin::versionlock (
 
   package { $package_name:
     ensure =&gt; $ensure,
+    tag    =&gt; [
+      &quot;bodgit::${module_name}&quot;,
+    ],
   }
 
   if $ensure == &#39;present&#39; {

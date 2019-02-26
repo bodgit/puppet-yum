@@ -148,7 +148,7 @@ class yum::clean {
     fail(&#39;You must include the yum base class before using the yum::clean class&#39;)
   }
 
-  exec { &#39;yum clean all&#39;:
+  exec { &quot;yum clean --enablerepo=&#39;*&#39; all&quot;:
     path        =&gt; $::path,
     refreshonly =&gt; true,
   }

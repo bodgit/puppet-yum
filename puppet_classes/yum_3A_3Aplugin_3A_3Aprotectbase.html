@@ -195,7 +195,10 @@ include ::yum::plugin::protectbase</code></pre>
 32
 33
 34
-35</pre>
+35
+36
+37
+38</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/plugin/protectbase.pp', line 15</span>
@@ -212,6 +215,9 @@ class yum::plugin::protectbase (
 
   package { $package_name:
     ensure =&gt; present,
+    tag    =&gt; [
+      &quot;bodgit::${module_name}&quot;,
+    ],
   }
 
   if $ensure == &#39;present&#39; {

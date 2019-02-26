@@ -335,7 +335,10 @@ include ::yum::plugin::fastestmirror</code></pre>
 52
 53
 54
-55</pre>
+55
+56
+57
+58</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/plugin/fastestmirror.pp', line 25</span>
@@ -362,6 +365,9 @@ class yum::plugin::fastestmirror (
 
   package { $package_name:
     ensure =&gt; $ensure,
+    tag    =&gt; [
+      &quot;bodgit::${module_name}&quot;,
+    ],
   }
 
   if $ensure == &#39;present&#39; {

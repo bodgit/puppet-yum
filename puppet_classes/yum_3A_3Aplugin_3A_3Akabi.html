@@ -223,7 +223,10 @@ include ::yum::plugin::kabi</code></pre>
 36
 37
 38
-39</pre>
+39
+40
+41
+42</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/plugin/kabi.pp', line 17</span>
@@ -242,6 +245,9 @@ class yum::plugin::kabi (
 
   package { $package_name:
     ensure =&gt; $ensure,
+    tag    =&gt; [
+      &quot;bodgit::${module_name}&quot;,
+    ],
   }
 
   if $ensure == &#39;present&#39; {
