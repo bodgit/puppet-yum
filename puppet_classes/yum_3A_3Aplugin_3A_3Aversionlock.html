@@ -174,7 +174,7 @@ include ::yum::plugin::versionlock</code></pre>
         <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>undef</tt>)</em>
+        <em class="default">(defaults to: <tt>$::yum::params::versionlock_show_hint</tt>)</em>
       
       
     </li>
@@ -259,7 +259,7 @@ class yum::plugin::versionlock (
   String                    $package_name     = $::yum::params::versionlock_package_name,
   Optional[Boolean]         $follow_obsoletes = undef,
   Stdlib::Absolutepath      $locklist         = &quot;${::yum::pluginconf_dir}/versionlock.list&quot;,
-  Optional[Boolean]         $show_hint        = undef,
+  Optional[Boolean]         $show_hint        = $::yum::params::versionlock_show_hint,
 ) inherits ::yum::params {
 
   if ! defined(Class[&#39;::yum&#39;]) {
