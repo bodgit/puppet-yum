@@ -51,12 +51,14 @@ class yum::params {
           $fssnap_dir            = undef
           $protected             = {}
           $security_package_name = 'yum-plugin-security'
+          $versionlock_show_hint = undef
         }
         default: {
-          $fssnap_dir = "${conf_dir}/fssnap.d"
-          $protected  = {
+          $fssnap_dir            = "${conf_dir}/fssnap.d"
+          $protected             = {
             'systemd' => {},
           }
+          $versionlock_show_hint = true
         }
       }
 

@@ -22,7 +22,7 @@ class yum::plugin::versionlock (
   String                    $package_name     = $::yum::params::versionlock_package_name,
   Optional[Boolean]         $follow_obsoletes = undef,
   Stdlib::Absolutepath      $locklist         = "${::yum::pluginconf_dir}/versionlock.list",
-  Optional[Boolean]         $show_hint        = undef,
+  Optional[Boolean]         $show_hint        = $::yum::params::versionlock_show_hint,
 ) inherits ::yum::params {
 
   if ! defined(Class['::yum']) {
