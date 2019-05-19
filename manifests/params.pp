@@ -214,7 +214,6 @@ class yum::params {
 
                     $descr = $repo ? {
                       'centosplus' => 'CentOSPlus',
-                      'fasttrack'  => 'CentOSPlus',
                       default      => capitalize($repo),
                     }
 
