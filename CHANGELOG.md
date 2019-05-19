@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.1.1](https://github.com/bodgit/puppet-yum/tree/v1.1.1) (2019-05-19)
+[Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.1.0...v1.1.1)
+
+**Fixed bugs:**
+
+- Correct description for CentOS 7.x Fasttrack repos [\#7](https://github.com/bodgit/puppet-yum/issues/7)
+- Versionlock plugin show\_hint should default to true on 7.x [\#6](https://github.com/bodgit/puppet-yum/issues/6)
+
 ## [v1.1.0](https://github.com/bodgit/puppet-yum/tree/v1.1.0) (2019-02-26)
 [Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.0.4...v1.1.0)
 
