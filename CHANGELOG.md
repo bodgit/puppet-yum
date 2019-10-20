@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.1.2](https://github.com/bodgit/puppet-yum/tree/v1.1.2) (2019-10-20)
+[Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.1.1...v1.1.2)
+
+**Implemented enhancements:**
+
+- Update for CentOS 7.7 [\#8](https://github.com/bodgit/puppet-yum/issues/8)
+
 ## [v1.1.1](https://github.com/bodgit/puppet-yum/tree/v1.1.1) (2019-05-19)
 [Full Changelog](https://github.com/bodgit/puppet-yum/compare/v1.1.0...v1.1.1)
 
