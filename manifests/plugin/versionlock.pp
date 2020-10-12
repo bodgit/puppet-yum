@@ -46,6 +46,7 @@ class yum::plugin::versionlock (
       owner => 0,
       group => 0,
       mode  => '0644',
+      warn  => "# !!! Managed by Puppet !!!\n",
     }
   }
 }
